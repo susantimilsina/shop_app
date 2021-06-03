@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:shopapp/providers/cart.dart';
 import 'package:shopapp/providers/orders.dart';
 import 'package:shopapp/providers/products.dart';
+import 'package:shopapp/screens/edit_screen.dart';
+import 'package:shopapp/screens/my_own_product.dart';
 import 'package:shopapp/screens/orders_screen.dart';
 import './screens/cart_screen.dart';
 import './screens/products_overview_screen.dart';
@@ -15,14 +17,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => Products(),
+        ChangeNotifierProvider.value(
+          value:  Products(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => Cart(),
+        ChangeNotifierProvider.value(
+          value : Cart(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => Orders(),
+        ChangeNotifierProvider.value(
+          value : Orders(),
         ),
       ],
       child: MaterialApp(
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
             ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
             CartScreen.routeName: (ctx) => CartScreen(),
             OrdersScreen.routeName: (ctx) => OrdersScreen(),
+            MyOwnProduct.routeName: (ctx) => MyOwnProduct(),
+            EditScreen.routeName: (ctx) => EditScreen(),
           }),
     );
   }
